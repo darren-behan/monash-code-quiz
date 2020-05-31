@@ -21,8 +21,8 @@
 
   <!-- Navbar -->
   <nav class="navbar navbar-light bg-light">
-    <a id="highscores" class="navbar-brand" href="#">View Highscores</a>
-    <div class="time">Time: <span class="time-count">3</span></div>
+    <a id="highscore-link" class="navbar-brand" href="#">View Highscores</a>
+    <div class="time">Time: <span class="time-count">5</span></div>
   </nav>
 
   <!-- Section -->
@@ -52,10 +52,18 @@
         </div>
         <div id="results">
           <h2>All Done!</h2>
+          <div id="score-display"></div>
           <div>
-            <label>Enter your initials</label>
-            <input type="text" id="initials" name="initials">
+            <input type="text" id="initials" name="initials" placeholder="Enter your initials">
             <button id="submit-button" type="button" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+        <div id="highscores">
+          <h2>Highscores</h2>
+          <div>
+            <ol id="score-ranking"></ol>
+            <a src="index.html"><button id="go-back" type="button" class="btn btn-primary">Go Back</button></a>
+            <button id="clear-scores" type="button" class="btn btn-primary">Clear Highscores</button>
           </div>
         </div>
       </div>
