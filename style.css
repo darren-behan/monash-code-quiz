@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+.bg-light .navbar-brand {
+  color: #007bff;
+}
+
+.row {
+  margin: auto;
+  padding: auto;
+}
+
