@@ -122,7 +122,7 @@ function renderCounter() {
 
 function setTime() {
   clearInterval(TIMER);
-  totalSeconds = 50;
+  totalSeconds = 70;
 }
 
 function renderTime() {
@@ -167,12 +167,18 @@ function submitScorePage() {
   results.style.display = "block";
   resultsScore.innerHTML = "<h4>" + "Your final score is: " + score + "</h4>";
   initials.value = "";
-
-  // if input is empty, alert user to enter initials
 }
+
+submitScore.addEventListener("click", highScorePage);
 
 function highScorePage(event) {
   event.preventDefault();
+
+  if (initials.value.length == 0) { 
+    alert("Please enter your initials");  	
+    return false; 
+  }
+
   setScore();
   renderScore();
 
@@ -180,8 +186,6 @@ function highScorePage(event) {
   nav.style.display = "none";
   highScores.style.display = "block";
 }
-
-submitScore.addEventListener("click", highScorePage);
 
 function setScore() {
   var objA = initials.value + " " + score;
