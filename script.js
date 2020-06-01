@@ -94,6 +94,7 @@ highScoreLink.addEventListener("click", renderHighScoresLink);
 // start quiz
 function startQuiz() {
   start.style.display = "none";
+  highScoreLink.style.display = "none";
   renderQuestion();
   quiz.style.display = "block";
   renderCounter();
