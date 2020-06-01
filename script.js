@@ -126,7 +126,7 @@ function setTime() {
 }
 
 function renderTime() {
-  var secondsLeft = totalSeconds - secondsElapsed;
+  secondsLeft = totalSeconds - secondsElapsed;
   timeCount.textContent = secondsLeft;
 
   if (secondsElapsed >= totalSeconds) {
@@ -146,7 +146,9 @@ function stopTimer() {
 function checkAnswer(answer) {
   if (answer == questions[runningQuestion].correct) {
     // answer is correct
-    score++;
+    score += 5;
+  } else {
+    secondsElapsed += 10;
   }
 
   // else answer is incorrect, deduct time from TIMER
