@@ -83,12 +83,13 @@ function init() {
   highScores.style.display = "none";
 }
 
-function viewHighScorePageLink() {
+function renderHighScoresLink() {
   start.style.display = "none";
-  highScorePage();
+  nav.style.display = "none";
+  highScores.style.display = "block";
 }
 
-highScoreLink.addEventListener("click", viewHighScorePageLink);
+highScoreLink.addEventListener("click", renderHighScoresLink);
 
 // start quiz
 function startQuiz() {
@@ -169,9 +170,9 @@ function submitScorePage() {
   initials.value = "";
 }
 
-submitScore.addEventListener("click", highScorePage);
+submitScore.addEventListener("click", renderHighScores);
 
-function highScorePage(event) {
+function renderHighScores(event) {
   event.preventDefault();
 
   if (initials.value.length == 0) { 
@@ -188,7 +189,7 @@ function highScorePage(event) {
 }
 
 function setScore() {
-  var objA = initials.value + " " + score;
+  var objA = {initials: initials.value, userScore: score}
 
   objB.push(objA);
   console.log(objB);
@@ -206,8 +207,9 @@ function renderScore() {
     var scoreStored = objB[i];
     
     var li = document.createElement("li");
-    li.textContent = scoreStored;
+    li.textContent = scoreStored.initials.toUpperCase() + " - " + scoreStored.userScore;
     li.setAttribute("data-index", i);
+    li.setAttribute("id", "userScore");
 
     scoresRanked.appendChild(li);
   }
