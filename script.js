@@ -43,6 +43,27 @@ var questions = [
     choiceC: "3. Answer",
     correct: "C",
   },
+  {
+    question: "What does HTML stand for?",
+    choiceA: "1. Answer",
+    choiceB: "2. Answer",
+    choiceC: "3. Answer",
+    correct: "A",
+  },
+  {
+    question: "What does CSS stand for?",
+    choiceA: "1. Answer",
+    choiceB: "2. Answer",
+    choiceC: "3. Answer",
+    correct: "B",
+  },
+  {
+    question: "What does JS stand for?",
+    choiceA: "1. Answer",
+    choiceB: "2. Answer",
+    choiceC: "3. Answer",
+    correct: "C",
+  }
 ];
 
 // create some variables
@@ -53,7 +74,7 @@ var totalSeconds = 0;
 var secondsElapsed = 0;
 var TIMER;
 var score = 0;
-var objScore = [];
+var objB = [];
 
 init();
 
@@ -101,7 +122,7 @@ function renderCounter() {
 
 function setTime() {
   clearInterval(TIMER);
-  totalSeconds = 5;
+  totalSeconds = 50;
 }
 
 function renderTime() {
@@ -151,41 +172,39 @@ function submitScorePage() {
 function highScorePage(event) {
   event.preventDefault();
   setScore();
-  // renderScore();
+  renderScore();
 
   results.style.display = "none";
   nav.style.display = "none";
   highScores.style.display = "block";
 }
 
-function setScore() {
-  obj = [{
-    "initials": initials.value,
-    "userScore": score
-  }];
-
-  objScore.push(obj);
-  for (var i = 0; i < objScore.length; i++) {
-    var objS = objScore[i];
-    localStorage.setItem(
-      "Score " + [i],
-      JSON.stringify(objS)
-    );
-  }
-}
-
 submitScore.addEventListener("click", highScorePage);
 
+function setScore() {
+  var objA = initials.value + " " + score;
+
+  objB.push(objA);
+  console.log(objB);
+
+  localStorage.setItem(
+    "score",
+    JSON.stringify(objB)
+  );
+}
+
 function renderScore() {
-  var scoreInitials = localStorage.getItem("initials");
-  var quizScore = localStorage.getItem("score");
+  scoresRanked.innerHTML = "";
 
-  if (!scoreInitials || !quizScore) {
-    return;
+  for (var i = 0; i < objB.length; i++) {
+    var scoreStored = objB[i];
+    
+    var li = document.createElement("li");
+    li.textContent = scoreStored;
+    li.setAttribute("data-index", i);
+
+    scoresRanked.appendChild(li);
   }
-
-  // userEmailSpan.textContent = email;
-  // userPasswordSpan.textContent = password;
 }
 
 function goBack() {
@@ -204,6 +223,8 @@ function resetQuiz() {
 
 function clearScore() {
   localStorage.clear();
+  objB = [];
+  scoresRanked.innerHTML = "";
 }
 
 clearScores.addEventListener("click", clearScore);
