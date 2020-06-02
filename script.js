@@ -193,8 +193,7 @@ function setScore() {
   var objA = {initials: initials.value, userScore: score}
 
   objB.push(objA);
-  console.log(objB);
-
+  
   localStorage.setItem(
     "score",
     JSON.stringify(objB)
@@ -204,8 +203,13 @@ function setScore() {
 function renderScore() {
   scoresRanked.innerHTML = "";
 
+  objB.sort(function(a, b) {
+    return b.userScore - a.userScore;
+  });
+
   for (var i = 0; i < objB.length; i++) {
-    var scoreStored = objB[i];
+    scoreStored = objB[i];
+    console.log(scoreStored);
     
     var li = document.createElement("li");
     li.textContent = scoreStored.initials.toUpperCase() + " - " + scoreStored.userScore;
@@ -219,6 +223,7 @@ function renderScore() {
 function goBack() {
   highScores.style.display = "none";
   nav.style.display = "flex";
+  highScoreLink.style.display = "flex";
   start.style.display = "block";
   resetQuiz();
 }
