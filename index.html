@@ -36,22 +36,25 @@
     <main class="container">
       <section class="row">
         <div class="col-md-12 col-sm-12">
+          <!-- Div to display the landing page where you can commence the quiz -->
           <div id="start">
             <h2>Coding Quiz Challenge</h2>
             <p>
               Try to answer the following coding questions within the time
               limit. Keep in mind that incorrect answers will penalize your quiz
-              time by ten seconds!
+              time by ten seconds! 10 questions with 5 points per correct answer.
             </p>
             <button id="start-button" type="button" class="btn btn-primary">
               Start Quiz
             </button>
           </div>
+          <!-- Div to display the question and multiple choice answers -->
           <div id="quiz" style="display: none;">
             <div id="question"></div>
             <div id="choices">
               <ol>
                 <li>
+                  <!-- Button to select answer with a javascript function running onClick to check if the answer is correct -->
                   <button
                     type="button"
                     class="btn btn-primary"
@@ -60,6 +63,7 @@
                   ></button>
                 </li>
                 <li>
+                  <!-- Button to select answer with a javascript function running onClick to check if the answer is correct -->
                   <button
                     type="button"
                     class="btn btn-primary"
@@ -68,6 +72,7 @@
                   ></button>
                 </li>
                 <li>
+                  <!-- Button to select answer with a javascript function running onClick to check if the answer is correct -->
                   <button
                     type="button"
                     class="btn btn-primary"
@@ -76,6 +81,7 @@
                   ></button>
                 </li>
                 <li>
+                  <!-- Button to select answer with a javascript function running onClick to check if the answer is correct -->
                   <button
                     type="button"
                     class="btn btn-primary"
@@ -86,6 +92,7 @@
               </ol>
             </div>
           </div>
+          <!-- Div to display the result at the end of the quiz and submit your score -->
           <div id="results">
             <h2>All Done!</h2>
             <div id="score-display"></div>
@@ -102,6 +109,7 @@
               </button>
             </div>
           </div>
+          <!-- Div to display all of your scores from highest to lowest -->
           <div id="highscores">
             <h2>Highscores</h2>
             <div>

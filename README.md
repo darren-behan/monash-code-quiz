@@ -2,7 +2,17 @@
 
 ## About
 
-Play my codw quiz now --> [Coding Quiz Challenge](https://darren-behan.github.io/monash-code-quiz/)
+```
+Once you click the 'Start Quiz' button, you will be displayed a question with four multiple choice answers.
+A timer will commence counting down from 70 seconds.
+As you select your answer, you will move to the next question.
+If you get a question correct, you will have 5 points added to your score.
+If you get a question wrong, you will have 10 seconds deducted from your time. 
+If your time reaches zero seconds before you answer all the questions, the quiz will end and you will be shown your score and have the chance to record your score.
+Likewise, if you answer all the questions, you will be shown your score and have the chance to record your score.
+```
+
+Play my code quiz now --> [Coding Quiz Challenge](https://darren-behan.github.io/monash-code-quiz/)
 
 ![Coding Quiz Challenge](./assets/img/quiz.png)
 

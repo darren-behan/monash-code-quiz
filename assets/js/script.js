@@ -125,26 +125,6 @@ var scoresArray = [];
 
 init();
 
-// Renders the score/s to the scoresRankedOl
-function renderScores() {
-  // Clears any existing appended li
-  scoresRankedOl.innerHTML = "";
-  // Sorts the scores
-  localStorageArray.sort(function (a, b) {
-    return b.userScore - a.userScore;
-  });
-  // Loops through the scoresArray and appends each li
-  for (var i = 0; i < localStorageArray.length; i++) {
-    scoreStored = localStorageArray[i];
-
-    var li = document.createElement("li");
-    li.textContent = scoreStored.initials + " - " + scoreStored.userScore;
-    li.setAttribute("id", "userScore");
-
-    scoresRankedOl.appendChild(li);
-  }
-}
-
 // Hiding resultsDiv and highScoresDiv on page load
 function init() {
   resultsDiv.style.display = "none";
@@ -157,11 +137,6 @@ function init() {
   if (scoresArray !== null) {
     localStorageArray = scoresArray;
   }
-}
-
-// Stores the users score in localStorage
-function storeScores() {
-  localStorage.setItem("score", JSON.stringify(localStorageArray));
 }
 
 // startQuiz function activates on click of startButton.
@@ -243,11 +218,11 @@ function stopTimer() {
   setTime();
   // Resets the timeCount in the html based on the time in setTime()
   renderTime();
-  submitScorePage();
+  recordScorePage();
 }
 
 // Renders resultsDiv to be able to log your score with your initials
-function submitScorePage() {
+function recordScorePage() {
   quizDiv.style.display = "none";
   resultsDiv.style.display = "block";
   resultsScoreDiv.innerHTML =
@@ -256,9 +231,21 @@ function submitScorePage() {
 }
 
 // Renders highScoresDiv to display results in order from highest to lowest
-function renderHighScores(event) {
+function renderRecordedScores(event) {
   event.preventDefault();
 
+  // Stores the users score
+  storeScores();
+  // Renders the score/s to the scoresRankedOl
+  renderScores();
+
+  resultsDiv.style.display = "none";
+  nav.style.display = "none";
+  highScoresDiv.style.display = "block";
+}
+
+// Stores the users score
+function storeScores() {
   // If no initials are entered, alerts the user and prevents the highScoresDiv from rendering
   if (initialsInput.value.length == 0) {
     alert("Please enter your initials");
@@ -269,15 +256,28 @@ function renderHighScores(event) {
   var scoreObject = { initials: initialsInput.value, userScore: quizScore };
   // Score is pushed to the localStorageArray
   localStorageArray.push(scoreObject);
+  // Stores the users score in localStorage
+  localStorage.setItem("score", JSON.stringify(localStorageArray));
+}
 
-  // Stores the users score
-  storeScores();
-  // Renders the score/s to the scoresRankedOl
-  renderScores();
+// Renders the score/s to the scoresRankedOl
+function renderScores() {
+  // Clears any existing appended li
+  scoresRankedOl.innerHTML = "";
+  // Sorts the scores
+  localStorageArray.sort(function (a, b) {
+    return b.userScore - a.userScore;
+  });
+  // Loops through the scoresArray and appends each li
+  for (var i = 0; i < localStorageArray.length; i++) {
+    scoreStored = localStorageArray[i];
 
-  resultsDiv.style.display = "none";
-  nav.style.display = "none";
-  highScoresDiv.style.display = "block";
+    var li = document.createElement("li");
+    li.textContent = scoreStored.initials + " - " + scoreStored.userScore;
+    li.setAttribute("id", "userScore");
+
+    scoresRankedOl.appendChild(li);
+  }
 }
 
 // Function hides startDiv & navbar & loads highScoresDiv on click of highScoreLink in navbar
@@ -312,6 +312,6 @@ function clearScore() {
 // Event Listeners
 navHighscoreLink.addEventListener("click", renderHighScoresLink);
 startButton.addEventListener("click", startQuiz);
-submitScoreButton.addEventListener("click", renderHighScores);
+submitScoreButton.addEventListener("click", renderRecordedScores);
 goBackButton.addEventListener("click", goBackButtonFunction);
 clearScoresButton.addEventListener("click", clearScore);
