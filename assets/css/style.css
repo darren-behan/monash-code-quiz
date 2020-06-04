@@ -3,7 +3,7 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
 }
 
@@ -30,8 +30,7 @@ li {
   margin: 1vh 1vw;
   padding: 1vh 1vw;
   border-radius: 5px;
-  background-color:  #007bff;
+  background-color: #007bff;
   color: #ffffff;
   height: auto;
 }
-
