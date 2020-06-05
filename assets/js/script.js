@@ -146,7 +146,7 @@ function startQuiz() {
   navHighscoreLink.style.display = "none";
   quizDiv.style.display = "block";
 
-  // Questions and Answers redner
+  // Questions and Answers render
   renderQuestion();
   // quizTimer commences countdown
   renderCounter();
