@@ -31,3 +31,8 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and score
 ```
+
+
+```
+This app is powered by Bootstrap & Javascript which dynamically amends the html based on user events.
+```
